@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>Health dashboard</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<main class="page">
+  <header class="head">
+    <div>
+      <h1>Health and training</h1>
+      <p class="lede" id="lede">Loading…</p>
+    </div>
+    <span class="badge" id="source" hidden></span>
+  </header>
+
+  <section class="tiles" aria-label="Key figures">
+    <div class="tile"><span class="lbl">Sleep score</span><span class="big" id="k-score">—</span><span class="sub">average, out of 100</span></div>
+    <div class="tile"><span class="lbl">Sleep per night</span><span class="big" id="k-sleep">—</span><span class="sub">average</span></div>
+    <div class="tile"><span class="lbl">Overnight HRV</span><span class="big" id="k-hrv">—</span><span class="sub">average, ms</span></div>
+    <div class="tile"><span class="lbl">Resting heart rate</span><span class="big" id="k-rhr">—</span><span class="sub">beats per minute</span></div>
+    <div class="tile"><span class="lbl">Intensity per week</span><span class="big" id="k-int">—</span><span class="sub" id="k-int-sub">minutes</span></div>
+    <div class="tile"><span class="lbl">Steps per day</span><span class="big" id="k-steps">—</span><span class="sub">average</span></div>
+  </section>
+
+  <section id="focus">
+    <h2>What to focus on</h2>
+    <ol class="focus" id="focus-list"></ol>
+  </section>
+
+  <section>
+    <h2>Sleep</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Sleep per night</h3>
+        <p class="note">Hours in each sleep stage. Dashed line is 7 hours.</p>
+        <div class="legend" id="leg-sleep"></div>
+        <div class="plot"><div class="chart" id="c-sleep"></div><div class="tip" hidden></div></div>
+      </div>
+      <div class="card">
+        <h3>When you fell asleep and woke up</h3>
+        <p class="note">One bar per night, from falling asleep to waking up.</p>
+        <div class="plot"><div class="chart" id="c-schedule"></div><div class="tip" hidden></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Recovery and stress</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Overnight HRV</h3>
+        <p class="note">Average per night in milliseconds. Higher and steady is good.</p>
+        <div class="plot"><div class="chart short" id="c-hrv"></div><div class="tip" hidden></div></div>
+      </div>
+      <div class="card">
+        <h3>Stress per day</h3>
+        <p class="note">Garmin's stress level, 0–100. Below 25 counts as rest.</p>
+        <div class="plot"><div class="chart short" id="c-stress"></div><div class="tip" hidden></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Activity</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Intensity minutes per week</h3>
+        <p class="note">Weeks start Monday. Vigorous minutes count double. Dashed line is the goal.</p>
+        <div class="plot"><div class="chart" id="c-int"></div><div class="tip" hidden></div></div>
+      </div>
+      <div class="card">
+        <h3>Steps per day</h3>
+        <p class="note">Dashed line is 10,000.</p>
+        <div class="plot"><div class="chart" id="c-steps"></div><div class="tip" hidden></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Fitness</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>What is going well</h3>
+        <ul class="good" id="good-list"></ul>
+      </div>
+      <div class="card">
+        <h3>Predicted race times</h3>
+        <p class="note">Garmin's estimate from your current fitness.</p>
+        <table class="table" id="t-race"><thead><tr><th>Distance</th><th>Time</th></tr></thead><tbody></tbody></table>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    Data from Garmin Connect via <a href="https://github.com/cyberjunky/python-garminconnect">python-garminconnect</a>.
+    Not medical advice. <a href="https://github.com/Abshir-23/garmin-health-dashboard">Source on GitHub</a>.
+  </footer>
+</main>
+<script src="vendor/d3.min.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+[project]
+name = "garmin-health-dashboard"
+version = "0.1.0"
+description = "Fetch your own Garmin Connect data and explore it in a static, privacy-first dashboard."
+requires-python = ">=3.10"
+dependencies = ["garminconnect==0.3.19"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "S"]
+ignore = ["S311"]  # random is only used for fake sample data
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

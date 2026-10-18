@@ -1,0 +1,14 @@
+# Real health data never goes into git
+docs/data/
+*.fit
+
+# Secrets
+.env
+.garminconnect/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
